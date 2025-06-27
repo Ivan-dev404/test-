@@ -28,6 +28,9 @@ final class Version20250627145753 extends AbstractMigration
         $table->addColumn('agreement', 'integer', ['notnull' => true, 'length' => 1]);
         $table->addColumn('score_bonus', 'integer', ['notnull' => true, 'default' => 0]);
         $table->setPrimaryKey(['id']);
+
+
+
     }
 
     public function down(Schema $schema): void
