@@ -29,12 +29,22 @@ final class Version20250627145753 extends AbstractMigration
         $table->addColumn('score_bonus', 'integer', ['notnull' => true, 'default' => 0]);
         $table->setPrimaryKey(['id']);
 
+        $table->addColumn('score', 'string', ['notnull' => true]);
+        $table = $schema->createTable('bonus_release');
+        $table->addColumn('id', 'integer', ['autoincrement' => true]);
+        $table->setPrimaryKey(['id']);
+        $table->addColumn('first_name', 'string', ['notnull' => true]);
+        $table->addColumn('release_type', 'string', ['notnull' => true]);
 
-
+        $table = $schema->getTable('test.profile_bonus_release');
+        $table->addColumn('id', 'integer', ['autoincrement' => true]);
+        $table->addColumn('score', 'string', ['notnull' => true]);
+        $table->setPrimaryKey(['id']);
     }
-
     public function down(Schema $schema): void
     {
         $schema->dropTable('profile');
+        $schema->dropTable('bonus_release');
+        $schema->dropTable('profile_bonus_release');
     }
 }
